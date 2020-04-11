@@ -1,0 +1,10 @@
+name: QuietAnimals
+version: ${project.version}
+main: me.peridactite.quietanimals.QuietAnimals
+api-version: 1.13
+authors: [Peridactite]
+description: Get those animals to shut up
+commands:
+  hushChicken:
+    description: Quiet Chickens
+    usage: /hushChicken #this is just what user sees when they type the command args wrong

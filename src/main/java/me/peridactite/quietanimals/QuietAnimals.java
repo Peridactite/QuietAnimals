@@ -1,6 +1,5 @@
 package me.peridactite.quietanimals;
 
-import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class QuietAnimals extends JavaPlugin {
@@ -11,7 +10,7 @@ public final class QuietAnimals extends JavaPlugin {
         System.out.println("[QuietAnimals]: Enabled.");
 
         // Register our command "kit" (set an instance of your command class as executor)
-        this.getCommand("hushChicken").setExecutor(new CommandHushChicken());
+        this.getCommand("hushAnimals").setExecutor(new CommandHushAnimals());
     }
 
     @Override

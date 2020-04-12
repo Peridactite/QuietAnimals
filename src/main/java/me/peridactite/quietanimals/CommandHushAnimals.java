@@ -11,7 +11,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandHushChicken implements CommandExecutor {
+public class CommandHushAnimals implements CommandExecutor {
     // This method is called, when somebody uses our command
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -25,7 +25,7 @@ public class CommandHushChicken implements CommandExecutor {
         //Setup args variables
         boolean willHush = true;
         int range = -1;
-        //First arg means whether chickens are silenced or not
+        //First arg means whether animals are silenced or not
         if (args.length > 0) {
             if (args[0].equals("true")) {
                 willHush = true;
@@ -55,52 +55,52 @@ public class CommandHushChicken implements CommandExecutor {
 
         switch(args.length){
             case 2:
-                someChickens(willHush, range, player);
+                someAnimals(willHush, range, player);
                 break;
             default:
-                allChickens(willHush);
+                allAnimals(willHush);
                 break;
         }
 
         return true;
     }
 
-    public void someChickens(boolean willHush, int range, Player player){
+    public void someAnimals(boolean willHush, int range, Player player){
 
         Location location = player.getLocation();
         List<Entity> nearbyEntites = (List)location.getWorld().getNearbyEntities(location, range, range, range);
-        ArrayList<Entity> chickenList = new ArrayList<>();
-        int chickenCount = 0;
+        ArrayList<Entity> animalList = new ArrayList<>();
+        int animalCount = 0;
         for(Entity c : nearbyEntites){
             System.out.println("Entity: " + c);
-            if(c.getType() == EntityType.CHICKEN){
-                System.out.println("Chicken Found");
-                chickenCount++;
-                chickenList.add(c);
+            if(c.getType() == EntityType.CHICKEN || c.getType() == EntityType.COW || c.getType() == EntityType.PIG || c.getType() == EntityType.SHEEP){
+                System.out.println("Animal Found");
+                animalCount++;
+                animalList.add(c);
                 c.setSilent(willHush);
             }else{
-                //System.out.println("Not Chicken");
+                //System.out.println("Not Animals");
             }
-            System.out.println("Muted " + chickenCount + " chickens.");
         }
+        System.out.println("Muted " + animalCount + " animals.");
     }
 
-    public void allChickens(boolean willHush){
+    public void allAnimals(boolean willHush){
 
         List<LivingEntity> entities = Bukkit.getWorld("world").getLivingEntities();
-        ArrayList<LivingEntity> chickenList = new ArrayList<>();
-        int chickenCount = 0;
+        ArrayList<LivingEntity> animalList = new ArrayList<>();
+        int animalCount = 0;
         for(LivingEntity c : entities){
             System.out.println("Entity: " + c);
-            if(c.getType() == EntityType.CHICKEN){
-                System.out.println("Chicken Found");
-                chickenCount++;
-                chickenList.add(c);
+            if(c.getType() == EntityType.CHICKEN || c.getType() == EntityType.COW || c.getType() == EntityType.PIG || c.getType() == EntityType.SHEEP){
+                System.out.println("Animal Found");
+                animalCount++;
+                animalList.add(c);
                 c.setSilent(willHush);
             }else{
-                //System.out.println("Not Chicken");
+                //System.out.println("Not Animal");
             }
-            System.out.println("Muted " + chickenCount + " chickens.");
         }
+        System.out.println("Muted " + animalCount + " animals.");
     }
 }
